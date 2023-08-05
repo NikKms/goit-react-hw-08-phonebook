@@ -43,8 +43,31 @@ export const logIn = createAsyncThunk(
     try {
       const res = await axios.post('/users/login', credentials);
       setAuthHeader(res.data.token);
+
+      const userName = res.data.user.name;
+
+      toast.success(`Hello, ${userName}! Welcome back!`, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeButton: false,
+        toastId: 'login-success-toast',
+      });
+
       return res.data;
     } catch (error) {
+      if (error.response) {
+        const { status } = error.response;
+        if (status === 400) {
+          toast.error('Login or password is incorrect.', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeButton: false,
+            toastId: 'login-error-toast',
+          });
+        }
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }

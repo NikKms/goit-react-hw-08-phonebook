@@ -43,7 +43,13 @@ const CreateContactForm = ({ toggleVisibility }) => {
     );
 
     if (extContact) {
-      alert(`${values.name} is already in contacts`);
+      toast.error(`${values.name} is already in contacts.`, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeButton: false,
+        toastId: 'error-toast',
+      });
       return;
     }
 

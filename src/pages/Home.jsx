@@ -2,11 +2,9 @@ import useAuth from 'hooks/useAuth';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectUser } from 'redux/auth/authSelectors';
-import { selectContacts } from 'redux/contacts/selectorsContacts';
 
 const Home = () => {
   const user = useSelector(selectUser);
-  const contacts = useSelector(selectContacts);
   const { isLoggedIn } = useAuth();
 
   const emergencyNumbers = [
@@ -26,14 +24,9 @@ const Home = () => {
       <h2>Welcome to the Phone Book app.</h2>
       {isLoggedIn ? (
         <div>
-          {contacts?.length ? (
-            <h2>
-              You have {contacts.length} contacts in your{' '}
-              <Link to="/contacts">PHONEBOOK</Link>
-            </h2>
-          ) : (
-            <h2>Your Phonebook is empty</h2>
-          )}
+          <p>
+            Your <Link to="/contacts">CONTACTS HERE</Link>
+          </p>
           <h2>Emergency Numbers:</h2>
           <ul>
             {emergencyNumbers.map(contact => (
