@@ -1,3 +1,4 @@
+import { Box, Divider, Heading, Text, VStack } from '@chakra-ui/react';
 import { ContactItem } from 'components/ContactItem';
 import { Loader } from 'components/Loader';
 import { useSelector } from 'react-redux';
@@ -40,28 +41,35 @@ const ContactList = () => {
   const sortedLetters = Object.keys(sortedContacts).sort();
 
   return (
-    <>
+    <VStack align="start" spacing={4} p={4}>
       {isLoading && <Loader />}
-      <>
-        {contacts && <p>Total contacts: {contacts.length}</p>}
-        {error ? (
-          <p>Oh no, there was an error</p>
-        ) : (
-          sortedLetters.map(letter => (
-            <div key={letter}>
-              <h3>{letter}</h3>
-              <ul>
-                {sortedContacts[letter].map(({ name, number, id }) => (
-                  <li key={id}>
-                    <ContactItem name={name} number={number} contactId={id} />
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))
-        )}
-      </>
-    </>
+      {contacts && (
+        <Text fontSize="sm" color="gray.500">
+          Total contacts: {contacts.length}
+        </Text>
+      )}
+      {error ? (
+        <Text color="red.500">Oh no, there was an error</Text>
+      ) : (
+        sortedLetters.map((letter, index) => (
+          <Box key={letter}>
+            <Heading as="h3" size="sm">
+              {letter}
+            </Heading>
+            {index !== sortedLetters.length - 1 && (
+              <Divider mt={2} mb={4} w="100%" borderColor="gray.300" />
+            )}
+            <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
+              {sortedContacts[letter].map(({ name, number, id }) => (
+                <li key={id}>
+                  <ContactItem name={name} number={number} contactId={id} />
+                </li>
+              ))}
+            </ul>
+          </Box>
+        ))
+      )}
+    </VStack>
   );
 };
 

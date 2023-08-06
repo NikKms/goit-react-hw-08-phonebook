@@ -7,7 +7,17 @@ import {
   updateContact,
 } from 'redux/contacts/operationsContacts';
 import { toggleModal } from 'redux/modal/modalSlice';
+import {
+  Box,
+  Button,
+  Input,
+  Link,
+  Heading,
+  Flex,
+  Spacer,
+} from '@chakra-ui/react';
 import styled from '@emotion/styled';
+import { FaPhone } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
 const ErrorText = styled.div`
@@ -82,28 +92,60 @@ const ContactDetails = () => {
         onSubmit={handleSubmit}
       >
         <Form>
-          <h2>Contact Details</h2>
-          <label>
-            Name:
-            <Field type="text" name="name" />
-            <ErrorMessage name="name" component={ErrorText} className="error" />
-          </label>
-          <label>
-            Number:
-            <Field type="text" name="number" />
-            <ErrorMessage
-              name="number"
-              component={ErrorText}
-              className="error"
-            />
-          </label>
-          <button type="submit">Update Contact</button>
+          <Box p={4} shadow="md" borderRadius="md" position="relative">
+            <Heading as="h2" size="lg" mb={4}>
+              Contact Details
+            </Heading>
+            <label>
+              Name:
+              <Field as={Input} type="text" name="name" />
+              <ErrorMessage
+                name="name"
+                component={ErrorText}
+                className="error"
+              />
+            </label>
+            <label>
+              Number:
+              <Field as={Input} type="text" name="number" />
+              <ErrorMessage
+                name="number"
+                component={ErrorText}
+                className="error"
+              />
+            </label>
+            <Flex justifyContent="flex-start" mt={4}>
+              <Button type="submit" bg="teal">
+                Update Contact
+              </Button>
+            </Flex>
+          </Box>
         </Form>
       </Formik>
-      <a href={`tel:${selectedContact.number}`}>TELEFONED</a>
-      <button type="button" onClick={handleDeleteContact}>
-        DELETE CONTACT
-      </button>
+
+      <Flex mt={4} alignItems="center">
+        <Button
+          type="button"
+          onClick={handleDeleteContact}
+          colorScheme="red"
+          size="lg"
+        >
+          DELETE CONTACT
+        </Button>
+        <Spacer />
+        <Box
+          bg="green.500"
+          p={4}
+          borderRadius="30%"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Link href={`tel:${selectedContact.number}`} display="block" mr={2}>
+            <FaPhone size={24} />
+          </Link>
+        </Box>
+      </Flex>
     </>
   );
 };

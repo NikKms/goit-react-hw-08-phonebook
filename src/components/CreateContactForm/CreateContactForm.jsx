@@ -2,16 +2,18 @@ import PropTypes from 'prop-types';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from '@emotion/styled';
+import {
+  Box,
+  Button,
+  Flex,
+  FormControl,
+  FormLabel,
+  Input,
+  Text,
+} from '@chakra-ui/react';
 import { addContact } from 'redux/contacts/operationsContacts';
 import { selectContacts } from 'redux/contacts/selectorsContacts';
 import { toast } from 'react-toastify';
-
-const ErrorText = styled.div`
-  color: red;
-  font-size: 14px;
-  margin-top: 5px;
-`;
 
 const initialValues = {
   name: '',
@@ -37,7 +39,7 @@ const CreateContactForm = ({ toggleVisibility }) => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     const extContact = contacts.some(
       contact => contact.name.toLowerCase() === values.name.toLowerCase()
     );
@@ -53,7 +55,7 @@ const CreateContactForm = ({ toggleVisibility }) => {
       return;
     }
 
-    dispatch(addContact({ name: values.name, number: values.number }));
+    await dispatch(addContact({ name: values.name, number: values.number }));
     resetForm();
     toggleVisibility();
 
@@ -73,24 +75,45 @@ const CreateContactForm = ({ toggleVisibility }) => {
       onSubmit={handleSubmit}
     >
       <Form>
-        <label>
-          Name
-          <Field type="text" name="name" placeholder="Введіть ім'я" />
-          <ErrorMessage name="name" component={ErrorText} />
-        </label>
+        <Box p={4} shadow="md" borderRadius="md">
+          <FormControl>
+            <FormLabel>Name</FormLabel>
+            <Field
+              as={Input}
+              type="text"
+              name="name"
+              placeholder="Enter name"
+            />
+            <ErrorMessage
+              name="name"
+              component={Text}
+              color="red.500"
+              fontSize="sm"
+            />
+          </FormControl>
 
-        <label>
-          Number
-          <Field
-            type="tel"
-            name="number"
-            placeholder="Введіть номер телефону"
-            required
-          />
-          <ErrorMessage name="number" component={ErrorText} />
-        </label>
+          <FormControl mt={4}>
+            <FormLabel>Number</FormLabel>
+            <Field
+              as={Input}
+              type="tel"
+              name="number"
+              placeholder="Enter phone number"
+            />
+            <ErrorMessage
+              name="number"
+              component={Text}
+              color="red.500"
+              fontSize="sm"
+            />
+          </FormControl>
 
-        <button type="submit">Add contact</button>
+          <Flex justifyContent="flex-end" mt={4}>
+            <Button type="submit" colorScheme="teal">
+              Add contact
+            </Button>
+          </Flex>
+        </Box>
       </Form>
     </Formik>
   );

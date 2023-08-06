@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
+import { FormControl, FormLabel, Input, Button } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 const ErrorText = styled.div`
@@ -39,9 +40,10 @@ const LoginForm = () => {
     >
       {({ isSubmitting }) => (
         <Form>
-          <label>
-            EMAIL
-            <Field
+          <FormControl mb={4}>
+            <FormLabel htmlFor="email">email</FormLabel>
+            <Input
+              as={Field}
               type="email"
               name="email"
               placeholder="Enter your email address"
@@ -49,10 +51,12 @@ const LoginForm = () => {
               required
             />
             <ErrorMessage name="email" component={ErrorText} />
-          </label>
-          <label>
-            PASSWORD
-            <Field
+          </FormControl>
+
+          <FormControl mb={4}>
+            <FormLabel htmlFor="password">password</FormLabel>
+            <Input
+              as={Field}
               type="password"
               name="password"
               placeholder="Enter your password"
@@ -60,10 +64,16 @@ const LoginForm = () => {
               required
             />
             <ErrorMessage name="password" component={ErrorText} />
-          </label>
-          <button type="submit" disabled={isSubmitting}>
+          </FormControl>
+
+          <Button
+            type="submit"
+            isLoading={isSubmitting}
+            colorScheme="teal"
+            mt={4}
+          >
             LOGIN
-          </button>
+          </Button>
         </Form>
       )}
     </Formik>

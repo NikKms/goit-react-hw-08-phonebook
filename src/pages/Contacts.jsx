@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/operationsContacts';
 import { selectIsModalOpen } from 'redux/modal/selectorsModal';
+import { Box, Button, Heading } from '@chakra-ui/react';
 import { CreateContactForm } from 'components/CreateContactForm';
 import { Filter } from 'components/Filter';
 import { ContactList } from 'components/ContactList';
@@ -30,11 +31,16 @@ const Contacts = () => {
   const modalContent = useMemo(() => <ContactDetails />, []);
 
   return (
-    <section>
-      <button type="button" onClick={toggleVisibility}>
+    <Box p={4}>
+      <Button
+        type="button"
+        onClick={toggleVisibility}
+        colorScheme={visible ? 'red' : 'teal'}
+        mb={4}
+      >
         {visible ? 'CANCEL' : 'ADD CONTACT'}
-      </button>
-      <h1>{title}</h1>
+      </Button>
+      <Heading mb={4}>{title}</Heading>{' '}
       {visible ? (
         <CreateContactForm toggleVisibility={toggleVisibility} />
       ) : (
@@ -42,10 +48,25 @@ const Contacts = () => {
           <Filter />
           <ContactList />
 
-          {isModalOpen && <Modal>{modalContent}</Modal>}
+          {isModalOpen && (
+            <Modal>
+              <Box p={4}>
+                <Button
+                  type="button"
+                  onClick={toggleVisibility}
+                  bg="transparent"
+                  color="gray.800"
+                  mb={4}
+                >
+                  CANCEL
+                </Button>
+                {modalContent}
+              </Box>
+            </Modal>
+          )}
         </>
       )}
-    </section>
+    </Box>
   );
 };
 
