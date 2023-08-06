@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toggleModal } from 'redux/modal/modalSlice';
@@ -32,6 +33,12 @@ const ContactItem = ({ name, number, contactId }) => {
       </div>
     </div>
   );
+};
+
+ContactItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  contactId: PropTypes.string.isRequired,
 };
 
 export default ContactItem;

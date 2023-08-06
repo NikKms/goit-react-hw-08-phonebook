@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -94,6 +94,10 @@ const CreateContactForm = ({ toggleVisibility }) => {
       </Form>
     </Formik>
   );
+};
+
+CreateContactForm.propTypes = {
+  toggleVisibility: PropTypes.func.isRequired,
 };
 
 export default CreateContactForm;

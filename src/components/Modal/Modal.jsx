@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { toggleModal } from 'redux/modal/modalSlice';
@@ -60,6 +61,10 @@ const Modal = ({ children }) => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Modal;

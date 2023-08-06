@@ -3,7 +3,6 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
-import { toast } from 'react-toastify';
 import styled from '@emotion/styled';
 
 const ErrorText = styled.div`
