@@ -1,4 +1,4 @@
-import { Box, Divider, Heading, Text, VStack } from '@chakra-ui/react';
+import { Box, Divider, Heading, Text } from '@chakra-ui/react';
 import { ContactItem } from 'components/ContactItem';
 import { Loader } from 'components/Loader';
 import { useSelector } from 'react-redux';
