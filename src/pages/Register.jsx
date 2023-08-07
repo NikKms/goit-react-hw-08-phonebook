@@ -1,9 +1,10 @@
-import { Box, Heading, Link } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import { RegisterForm } from 'components/RegisterForm';
 
 const Register = () => {
   return (
-    <Box p={4}>
+    <Box>
       {' '}
       <Heading as="h1" mb={4}>
         REGISTER
@@ -11,10 +12,10 @@ const Register = () => {
       <RegisterForm />
       <Box mt={4} fontSize="sm" color="gray.500">
         If you already have an account, please{' '}
-        <Link to="/login" color="blue.500">
+        <Box as={Link} to="/login" color="blue.500">
           {' '}
           log in
-        </Link>
+        </Box>
         .
       </Box>
     </Box>

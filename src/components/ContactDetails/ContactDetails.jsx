@@ -19,6 +19,7 @@ import {
 import styled from '@emotion/styled';
 import { FaPhone } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import { DeleteIcon } from '@chakra-ui/icons';
 
 const ErrorText = styled.div`
   color: red;
@@ -92,7 +93,7 @@ const ContactDetails = () => {
         onSubmit={handleSubmit}
       >
         <Form>
-          <Box p={4} shadow="md" borderRadius="md" position="relative">
+          <Box shadow="md" borderRadius="md">
             <Heading as="h2" size="lg" mb={4}>
               Contact Details
             </Heading>
@@ -130,7 +131,7 @@ const ContactDetails = () => {
           colorScheme="red"
           size="lg"
         >
-          DELETE CONTACT
+          <DeleteIcon />
         </Button>
         <Spacer />
         <Box

@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 import { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { toggleModal } from 'redux/modal/modalSlice';
-import { Box, Button, useColorMode } from '@chakra-ui/react';
+import { Box, Button, Container, useColorMode } from '@chakra-ui/react';
+import { GiReturnArrow } from 'react-icons/gi';
 
 const Modal = ({ children }) => {
   const dispatch = useDispatch();
-  const { colorMode } = useColorMode(); // Получаем текущий цветовой режим (light или dark)
+  const { colorMode } = useColorMode();
 
   const handleToggleModal = useCallback(() => {
     dispatch(toggleModal());
@@ -46,19 +47,23 @@ const Modal = ({ children }) => {
       bg="rgba(0, 0, 0, 0.7)"
       zIndex="9999"
     >
-      <Box
-        p={4}
-        borderRadius="md"
-        boxShadow="md"
-        height="90%"
-        width="90%"
-        bg={colorMode === 'dark' ? 'gray.800' : 'white'}
-      >
-        <Button type="button" onClick={handleToggleModal} mb={4}>
-          CANCEL
-        </Button>
-        {children}
-      </Box>
+      <Container>
+        <Box
+          p={4}
+          borderRadius="md"
+          boxShadow="md"
+          height="95%"
+          maxWidth="container.sm"
+          minW="320px"
+          bg={colorMode === 'dark' ? 'gray.800' : 'white'}
+          zIndex="9999"
+        >
+          <Button type="button" onClick={handleToggleModal} mb={4}>
+            <GiReturnArrow />
+          </Button>
+          {children}
+        </Box>
+      </Container>
     </Box>
   );
 };

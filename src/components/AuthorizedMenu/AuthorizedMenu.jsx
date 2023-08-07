@@ -14,7 +14,7 @@ const AuthorizedMenu = () => {
   const handleLogOut = () => dispatch(logout());
 
   return (
-    <Flex justifyContent="center" align="center" gap={4}>
+    <Flex justifyContent="center" align="center" gap={8}>
       <Text fontWeight="bold" color={userNameColor}>
         {user.name}
       </Text>

@@ -15,14 +15,7 @@ const ContactItem = ({ name, number, contactId }) => {
   };
 
   return (
-    <Box
-      as="div"
-      p={4}
-      borderWidth="1px"
-      borderRadius="md"
-      boxShadow="md"
-      w="80vw"
-    >
+    <Box as="div" p={2} borderWidth="1px" borderRadius="md" boxShadow="md">
       <Flex justify="space-between" align="center">
         <Box>
           <Flex align="center">

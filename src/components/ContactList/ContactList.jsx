@@ -41,7 +41,7 @@ const ContactList = () => {
   const sortedLetters = Object.keys(sortedContacts).sort();
 
   return (
-    <VStack align="start" spacing={4} p={4}>
+    <Box>
       {isLoading && <Loader />}
       {contacts && (
         <Text fontSize="sm" color="gray.500">
@@ -56,20 +56,18 @@ const ContactList = () => {
             <Heading as="h3" size="sm">
               {letter}
             </Heading>
-            {index !== sortedLetters.length - 1 && (
-              <Divider mt={2} mb={4} w="100%" borderColor="gray.300" />
-            )}
-            <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
+            <Divider mt={2} mb={4} w="100%" borderColor="gray.300" />
+            <Box as="ul" style={{ listStyleType: 'none', paddingLeft: 0 }}>
               {sortedContacts[letter].map(({ name, number, id }) => (
-                <li key={id}>
+                <Box as="li" key={id} mb="1.5px">
                   <ContactItem name={name} number={number} contactId={id} />
-                </li>
+                </Box>
               ))}
-            </ul>
+            </Box>
           </Box>
         ))
       )}
-    </VStack>
+    </Box>
   );
 };
 

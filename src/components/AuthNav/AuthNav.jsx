@@ -1,11 +1,13 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { List, ListItem, Link as ChakraLink } from '@chakra-ui/react';
 
-const AuthNav = () => {
+const AuthNav = ({ onCloseMobileMenu }) => {
   return (
-    <List display="flex" alignItems="center" justifyContent="center" gap={4}>
+    <List display="flex" alignItems="center" justifyContent="center" gap={8}>
       <ListItem>
         <ChakraLink
+          onClick={onCloseMobileMenu}
           as={Link}
           to="/register"
           fontWeight="bold"
@@ -17,6 +19,7 @@ const AuthNav = () => {
       </ListItem>
       <ListItem>
         <ChakraLink
+          onClick={onCloseMobileMenu}
           as={Link}
           to="/login"
           fontWeight="bold"
@@ -28,6 +31,10 @@ const AuthNav = () => {
       </ListItem>
     </List>
   );
+};
+
+AuthNav.propTypes = {
+  onCloseMobileMenu: PropTypes.func.isRequired,
 };
 
 export default AuthNav;

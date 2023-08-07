@@ -11,6 +11,7 @@ const Navigation = () => {
       display="flex"
       alignItems="center"
       justifyContent="center"
+      flexWrap="wrap"
       gap={6}
       fontSize="14px"
       fontWeight="bold"
