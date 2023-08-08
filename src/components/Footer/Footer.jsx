@@ -14,7 +14,7 @@ const Footer = () => {
             pt={2}
             pb={2}
           >
-            <Text>
+            <Text fontSize="13px">
               Created by <b>Nikolay Kamyshnikov</b>
             </Text>
             <Flex gap="2">
@@ -24,7 +24,7 @@ const Footer = () => {
                 transition="background-color 0.2s"
                 _hover={{ color: 'teal.500' }}
               >
-                <FaLinkedin size={20} />
+                <FaLinkedin size={24} />
               </Link>
               <Link
                 href="https://github.com/NikKms"
@@ -32,7 +32,7 @@ const Footer = () => {
                 transition="background-color 0.2s"
                 _hover={{ color: 'teal.500' }}
               >
-                <FaGithub size={20} />
+                <FaGithub size={24} />
               </Link>
             </Flex>
           </Box>

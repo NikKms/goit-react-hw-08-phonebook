@@ -21,7 +21,7 @@ const Layout = () => {
 
   return (
     <Box display="flex" flexDirection="column" minHeight="100vh ">
-      <AppBar onMobileMenuOpen={handleMobileMenuOpen} />{' '}
+      <AppBar onMobileMenuOpen={handleMobileMenuOpen} />
       <Box flex="1" mt="70px">
         <Container maxW="container.sm" minW={320} pt={4} pb={4}>
           <main>

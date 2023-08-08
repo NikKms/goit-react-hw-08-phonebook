@@ -23,17 +23,14 @@ const AppBar = ({ onMobileMenuOpen }) => {
     <Box
       as="header"
       bg={headerBgColor}
-      borderBottom={1}
-      borderColor="gray.200"
       fontFamily="Your-Preferred-Font, sans-serif"
-      py={2}
       position="fixed"
       top="0"
       left="0"
       width="100%"
       zIndex="999"
     >
-      <Container maxW="container.sm" minW="320px">
+      <Container maxW="container.sm" minW="320px" py={2}>
         <Flex
           align="center"
           justify="space-between"
