@@ -1,3 +1,4 @@
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { Box, Heading } from '@chakra-ui/react';
 import { LoginForm } from 'components/LoginForm';
 import { Link } from 'react-router-dom';
@@ -14,7 +15,7 @@ const Login = () => {
         If you don't have an account yet, please,{' '}
         <Box as={Link} to="/register" color="blue.500">
           {' '}
-          register
+          sign up <ExternalLinkIcon ml="2px" />
         </Box>
         .
       </Box>

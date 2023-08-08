@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
-import { FormControl, FormLabel, Input, Button} from '@chakra-ui/react';
+import { FormControl, FormLabel, Input, Button } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 const ErrorText = styled.div`
@@ -97,7 +97,7 @@ const RegisterForm = () => {
             colorScheme="teal"
             mt={4}
           >
-            REGISTER
+            SIGN UP
           </Button>
         </Form>
       )}

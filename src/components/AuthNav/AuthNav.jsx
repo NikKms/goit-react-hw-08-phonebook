@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { List, ListItem, Link as ChakraLink } from '@chakra-ui/react';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 const AuthNav = ({ onCloseMobileMenu }) => {
   return (
@@ -14,7 +15,8 @@ const AuthNav = ({ onCloseMobileMenu }) => {
           color="blue.500"
           _hover={{ textDecoration: 'underline' }}
         >
-          registration
+          sign up
+          <ExternalLinkIcon ml="2px" />
         </ChakraLink>
       </ListItem>
       <ListItem>
@@ -34,7 +36,7 @@ const AuthNav = ({ onCloseMobileMenu }) => {
 };
 
 AuthNav.propTypes = {
-  onCloseMobileMenu: PropTypes.func.isRequired,
+  onCloseMobileMenu: PropTypes.func,
 };
 
 export default AuthNav;

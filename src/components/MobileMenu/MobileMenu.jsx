@@ -36,7 +36,7 @@ const MobileMenu = ({ isOpen, onClose, finalFocusRef }) => {
       <DrawerOverlay bg={overlayBgColor} />
 
       <DrawerContent>
-        <DrawerHeader borderBottomWidth="1px" ml="auto">
+        <DrawerHeader borderBottomWidth="1px">
           <Box as="div">
             <Flex align="center" justify="space-between" gap={4}>
               {isLoggedIn ? (
@@ -52,8 +52,6 @@ const MobileMenu = ({ isOpen, onClose, finalFocusRef }) => {
             mt={4}
             as="nav"
             display="flex"
-            alignItems="center"
-            justifyContent="center"
             flexDirection="column"
             gap={6}
             fontSize="20px"

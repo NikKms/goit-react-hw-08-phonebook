@@ -19,7 +19,7 @@ import {
 import styled from '@emotion/styled';
 import { FaPhone } from 'react-icons/fa';
 import { toast } from 'react-toastify';
-import { DeleteIcon } from '@chakra-ui/icons';
+import { DeleteIcon, RepeatIcon } from '@chakra-ui/icons';
 
 const ErrorText = styled.div`
   color: red;
@@ -117,7 +117,7 @@ const ContactDetails = () => {
             </label>
             <Flex justifyContent="flex-start" mt={4}>
               <Button type="submit" bg="teal">
-                Update Contact
+                Edit <RepeatIcon ml="2px" />
               </Button>
             </Flex>
           </Box>

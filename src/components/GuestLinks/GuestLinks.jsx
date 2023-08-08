@@ -1,3 +1,4 @@
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { Box, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
@@ -33,7 +34,7 @@ const GuestLinks = () => {
           as={Link}
           to="/register"
         >
-          register
+          sign up <ExternalLinkIcon ml="2px" />
         </Box>
       </Box>
     </Box>
