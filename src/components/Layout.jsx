@@ -37,7 +37,12 @@ const Layout = () => {
         isOpen={isMobileMenuOpen}
         onClose={handleMobileMenuClose}
       />{' '}
-      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar
+        theme="dark"
+      />
     </Box>
   );
 };
