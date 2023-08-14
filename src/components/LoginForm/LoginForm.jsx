@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
-import { FormControl, FormLabel, Input, Button } from '@chakra-ui/react';
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  IconButton,
+} from '@chakra-ui/react';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import styled from '@emotion/styled';
 
 const ErrorText = styled.div`
@@ -25,7 +32,12 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(logIn(values));
@@ -57,11 +69,23 @@ const LoginForm = () => {
             <FormLabel htmlFor="password">password</FormLabel>
             <Input
               as={Field}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               placeholder="Enter your password"
               autoComplete="current-password"
               required
+              pr="4.5rem"
+            />
+            <IconButton
+              icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
+              onClick={togglePasswordVisibility}
+              variant="ghost"
+              size="sm"
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
+              position="absolute"
+              right="0.5rem"
+              top="50%"
+              transform="translateY(0)"
             />
             <ErrorMessage name="password" component={ErrorText} />
           </FormControl>

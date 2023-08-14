@@ -1,10 +1,20 @@
-import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
-import { FormControl, FormLabel, Input, Button } from '@chakra-ui/react';
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  Text,
+  Box,
+} from '@chakra-ui/react';
+import { IconButton } from '@chakra-ui/react';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+
 import styled from '@emotion/styled';
+import { useState } from 'react';
 
 const ErrorText = styled.div`
   color: red;
@@ -33,11 +43,17 @@ const validationSchema = Yup.object().shape({
       /^[a-zA-Z0-9!@#$%^&*()-_=+`~[\]{}|:<>/?]+$/,
       'The password must contain only Latin letters (both uppercase and lowercase), digits, and other characters.'
     )
+    .min(7, 'Password must be at least 7 characters long')
     .required('Password is required'),
 });
 
 const RegisterForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(register(values));
@@ -50,7 +66,7 @@ const RegisterForm = () => {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting, values }) => (
         <Form autoComplete="off">
           <FormControl mb={4}>
             <FormLabel htmlFor="name">username</FormLabel>
@@ -82,14 +98,31 @@ const RegisterForm = () => {
             <FormLabel htmlFor="password">password</FormLabel>
             <Input
               as={Field}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               placeholder="Enter your password"
               autoComplete="current-password"
               required
+              pr="4.5rem"
+            />
+            <IconButton
+              icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
+              onClick={togglePasswordVisibility}
+              variant="ghost"
+              size="sm"
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
+              position="absolute"
+              right="0.5rem"
+              top="50%"
+              transform="translateY(0)"
             />
             <ErrorMessage name="password" component={ErrorText} />
           </FormControl>
+          {values.password.length < 7 && (
+            <Text fontSize="12px" color="gray" mt="0">
+              Password must be at least 7 characters long
+            </Text>
+          )}
 
           <Button
             type="submit"
