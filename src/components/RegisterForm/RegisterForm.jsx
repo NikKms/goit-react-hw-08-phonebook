@@ -8,7 +8,6 @@ import {
   Input,
   Button,
   Text,
-  Box,
 } from '@chakra-ui/react';
 import { IconButton } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
